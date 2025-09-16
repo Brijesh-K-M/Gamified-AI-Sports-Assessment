@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAI Gamified Talent Assessment Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Achievement Notification -->
+    <div id="achievement-notification" class="achievement-notification hidden">
+        <div class="achievement-content">
+            <div class="achievement-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="achievement-text">
+                <h4 class="achievement-title">Achievement Unlocked!</h4>
+                <p class="achievement-description">First Steps - Complete your first assessment test</p>
+                <div class="achievement-points">+100 XP</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Point Animation -->
+    <div id="point-animation" class="point-animation hidden">
+        <div class="points-earned">+300 XP</div>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="screen active">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="https://www.ux4g.gov.in/assets/img/uxdt-logo/sai-gif-sai-01.jpg" height="50px" alt="">
+                        <div class="logo-text">
+                            <h1>Gamified AI Sports Assessment</h1>
+                        </div>
+                    </div>
+                    <div class="gamification-preview">
+                        <div class="level-preview">
+                            <i class="fas fa-medal"></i>
+                            <span>Join 2,100+ Athletes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <p class="hero-subtitle">Level up your athletic journey with our AI-powered assessment platform. Earn XP, unlock achievements, and compete with athletes nationwide!</p>
+                        
+                        <div class="gamification-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Level Up System</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>Achievement Badges</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-fire"></i>
+                                <span>Daily Challenges</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-crown"></i>
+                                <span>Leaderboards</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="test-showcase">
+                        <h3>Assessment Tests & Rewards</h3>
+                        <div class="test-grid">
+                            <div class="test-card">
+                                <div class="test-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <h4>Standing Broad Jump</h4>
+                                <p>Explosive leg strength assessment</p>
+                                <div class="points-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>200-450 XP</span>
+                                </div>
+                            </div>
+                            <div class="test-card">
+                                <div class="test-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <h4>Sit-ups</h4>
+                                <p>Core strength and endurance test</p>
+                                <div class="points-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>220-500 XP</span>
+                                </div>
+                            </div>
+                            <div class="test-card">
+                                <div class="test-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>30m Sprint</h4>
+                                <p>Speed and acceleration measurement</p>
+                                <div class="points-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>180-400 XP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-selection">
+                        <h3>Start Your Journey</h3>
+                        <div class="user-buttons">
+                            <button class="btn btn--primary btn--lg" onclick="showAthleteLogin()">
+                                <i class="fas fa-user-athlete"></i>
+                                Athlete Assessment
+                            </button>
+                            <button class="btn btn--secondary btn--lg" onclick="showOfficialLogin()">
+                                <i class="fas fa-chart-bar"></i>
+                                Official Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Athlete Registration -->
+    <div id="athlete-login" class="screen">
+        <div class="container">
+            <div class="auth-form">
+                <button class="btn btn--outline btn--sm back-btn" onclick="showLanding()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                
+                <div class="gamification-onboarding">
+                    <div class="onboarding-progress">
+                        <div class="progress-steps">
+                            <div class="step active">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </div>
+                            <div class="step">
+                                <i class="fas fa-trophy"></i>
+                                <span>Welcome</span>
+                            </div>
+                            <div class="step">
+                                <i class="fas fa-play"></i>
+                                <span>Start</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Create Your Athlete Profile</h2>
+                <p>Join the community and start earning XP!</p>
+                
+                <form id="athlete-form" class="form">
+                    <div class="form-group">
+                        <label class="form-label" for="athlete-name">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" id="athlete-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="athlete-age">
+                            <i class="fas fa-calendar"></i> Age
+                        </label>
+                        <input type="number" id="athlete-age" class="form-control" min="12" max="25" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="athlete-gender">
+                            <i class="fas fa-venus-mars"></i> Gender
+                        </label>
+                        <select id="athlete-gender" class="form-control" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="athlete-location">
+                            <i class="fas fa-map-marker-alt"></i> Location (City, State)
+                        </label>
+                        <input type="text" id="athlete-location" class="form-control" required>
+                    </div>
+                    
+                    <div class="registration-rewards">
+                        <h4><i class="fas fa-gift"></i> Registration Rewards</h4>
+                        <div class="reward-items">
+                            <div class="reward-item">
+                                <i class="fas fa-star"></i>
+                                <span>100 Welcome XP</span>
+                            </div>
+                            <div class="reward-item">
+                                <i class="fas fa-medal"></i>
+                                <span>Beginner Badge</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">
+                        <i class="fas fa-rocket"></i> Start My Journey
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Athlete Dashboard/Profile -->
+    <div id="athlete-profile" class="screen">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-details">
+                        <h2 id="profile-athlete-name">Arjun Sharma</h2>
+                        <p id="profile-athlete-details">16 years • Male • Mumbai, Maharashtra</p>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="athlete-level">3</div>
+                        <div class="stat-label">Level</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="athlete-points">1,450</div>
+                        <div class="stat-label">Total XP</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="athlete-streak">5</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gamification-dashboard">
+                <div class="level-progress-section">
+                    <h3><i class="fas fa-chart-line"></i> Level Progress</h3>
+                    <div class="level-progress-card">
+                        <div class="level-info">
+                            <span class="current-level">Level 3 - Advanced</span>
+                            <span class="next-level">Next: Elite (1050 XP to go)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="level-progress" style="width: 58%"></div>
+                        </div>
+                        <div class="xp-info">
+                            <span>1,450 / 2,500 XP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="badges-section">
+                    <h3><i class="fas fa-trophy"></i> Achievement Collection</h3>
+                    <div class="badges-grid" id="badges-grid">
+                        <div class="badge-item earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="badge-name">First Steps</div>
+                        </div>
+                        <div class="badge-item earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="badge-name">Perfect Score</div>
+                        </div>
+                        <div class="badge-item earned">
+                            <div class="badge-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="badge-name">Speed Demon</div>
+                        </div>
+                        <div class="badge-item locked">
+                            <div class="badge-icon">
+                                <i class="fas fa-target"></i>
+                            </div>
+                            <div class="badge-name">Consistent Performer</div>
+                        </div>
+                        <div class="badge-item locked">
+                            <div class="badge-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="badge-name">Streak Master</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenges-section">
+                    <h3><i class="fas fa-tasks"></i> Active Challenges</h3>
+                    <div class="challenges-list">
+                        <div class="challenge-item">
+                            <div class="challenge-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="challenge-info">
+                                <h4>Daily Assessment</h4>
+                                <p>Complete one test today</p>
+                                <div class="challenge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 0%"></div>
+                                    </div>
+                                    <span>0/1</span>
+                                </div>
+                            </div>
+                            <div class="challenge-reward">+50 XP</div>
+                        </div>
+                        <div class="challenge-item">
+                            <div class="challenge-icon">
+                                <i class="fas fa-calendar-week"></i>
+                            </div>
+                            <div class="challenge-info">
+                                <h4>Triple Threat</h4>
+                                <p>Complete all three tests this week</p>
+                                <div class="challenge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 33%"></div>
+                                    </div>
+                                    <span>1/3</span>
+                                </div>
+                            </div>
+                            <div class="challenge-reward">+200 XP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn--primary btn--lg" onclick="showTestSelection()">
+                    <i class="fas fa-play"></i> Continue Assessment
+                </button>
+                <button class="btn btn--secondary btn--lg" onclick="showLeaderboard()">
+                    <i class="fas fa-crown"></i> View Leaderboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Selection -->
+    <div id="test-selection" class="screen">
+        <div class="container">
+            <div class="breadcrumb">
+                <span>Assessment</span> <i class="fas fa-chevron-right"></i> <span class="active">Test Selection</span>
+            </div>
+            
+            <div class="test-selection-header">
+                <h2>Choose Your Challenge</h2>
+                <p>Select a test to earn XP and unlock achievements!</p>
+                
+                <div class="daily-bonus">
+                    <i class="fas fa-gift"></i>
+                    <span>Daily Bonus Active: +50% XP for all tests today!</span>
+                </div>
+            </div>
+            
+            <div class="test-selection-grid">
+                <div class="test-option-card" data-test="broadJump">
+                    <div class="test-status incomplete">
+                        <i class="fas fa-clock"></i>
+                        <span>Not Started</span>
+                    </div>
+                    <div class="difficulty-indicator medium">
+                        <i class="fas fa-signal"></i>
+                        <span>Medium</span>
+                    </div>
+                    <div class="test-icon-large">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Standing Broad Jump</h3>
+                    <p>Measures explosive leg strength and body coordination</p>
+                    <div class="test-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3 attempts</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-ruler"></i>
+                            <span>Distance</span>
+                        </div>
+                    </div>
+                    <div class="xp-rewards">
+                        <div class="xp-range">200-450 XP</div>
+                        <div class="bonus-xp">+200 XP Perfect Score Bonus</div>
+                    </div>
+                    <button class="btn btn--primary" onclick="startTest('broadJump')">
+                        <i class="fas fa-play"></i> Start Challenge
+                    </button>
+                </div>
+
+                <div class="test-option-card" data-test="sitUps">
+                    <div class="test-status incomplete">
+                        <i class="fas fa-clock"></i>
+                        <span>Not Started</span>
+                    </div>
+                    <div class="difficulty-indicator hard">
+                        <i class="fas fa-signal"></i>
+                        <span>Hard</span>
+                    </div>
+                    <div class="test-icon-large">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Sit-ups</h3>
+                    <p>Measures abdominal strength and endurance</p>
+                    <div class="test-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>30-45 seconds</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-hashtag"></i>
+                            <span>Repetitions</span>
+                        </div>
+                    </div>
+                    <div class="xp-rewards">
+                        <div class="xp-range">220-500 XP</div>
+                        <div class="bonus-xp">+200 XP Perfect Score Bonus</div>
+                    </div>
+                    <button class="btn btn--primary" onclick="startTest('sitUps')">
+                        <i class="fas fa-play"></i> Start Challenge
+                    </button>
+                </div>
+
+                <div class="test-option-card" data-test="sprint30m">
+                    <div class="test-status incomplete">
+                        <i class="fas fa-clock"></i>
+                        <span>Not Started</span>
+                    </div>
+                    <div class="difficulty-indicator easy">
+                        <i class="fas fa-signal"></i>
+                        <span>Easy</span>
+                    </div>
+                    <div class="test-icon-large">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>30m Sprint</h3>
+                    <p>Measures speed and acceleration</p>
+                    <div class="test-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2 attempts</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-stopwatch"></i>
+                            <span>Time</span>
+                        </div>
+                    </div>
+                    <div class="xp-rewards">
+                        <div class="xp-range">180-400 XP</div>
+                        <div class="bonus-xp">+200 XP Perfect Score Bonus</div>
+                    </div>
+                    <button class="btn btn--primary" onclick="startTest('sprint30m')">
+                        <i class="fas fa-play"></i> Start Challenge
+                    </button>
+                </div>
+            </div>
+
+            <div class="completed-tests" id="completed-tests" style="display: none;">
+                <h3><i class="fas fa-check-circle"></i> Assessment Progress</h3>
+                <div class="summary-card">
+                    <div class="overall-score">
+                        <span>Overall Score</span>
+                        <div class="score-display" id="overall-score">--</div>
+                    </div>
+                    <div class="total-xp">
+                        <span>Total XP Earned</span>
+                        <div class="xp-display" id="total-xp-earned">0</div>
+                    </div>
+                    <button class="btn btn--secondary btn--full-width" onclick="viewResults()">
+                        <i class="fas fa-chart-line"></i> View Detailed Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Instructions -->
+    <div id="test-instructions" class="screen">
+        <div class="container">
+            <div class="breadcrumb">
+                <span>Assessment</span> <i class="fas fa-chevron-right"></i> 
+                <span>Test Selection</span> <i class="fas fa-chevron-right"></i> 
+                <span class="active">Instructions</span>
+            </div>
+            <button class="btn btn--outline btn--sm back-btn" onclick="showTestSelection()">
+                <i class="fas fa-arrow-left"></i> Back to Selection
+            </button>
+            
+            <div class="instruction-content">
+                <div class="test-header">
+                    <div class="test-icon-large" id="instruction-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h2 id="instruction-title">Standing Broad Jump</h2>
+                    <p id="instruction-description">Measures explosive leg strength and body coordination</p>
+                    
+                    <div class="challenge-info">
+                        <div class="xp-potential">
+                            <i class="fas fa-star"></i>
+                            <span id="xp-potential">200-450 XP</span>
+                        </div>
+                        <div class="difficulty-level" id="difficulty-level">
+                            <i class="fas fa-signal"></i>
+                            <span>Medium Difficulty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instruction-details">
+                    <div class="detail-section">
+                        <h3><i class="fas fa-list-ol"></i> Instructions</h3>
+                        <ol id="instruction-steps" class="instruction-list">
+                            <!-- Instructions will be populated by JavaScript -->
+                        </ol>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3><i class="fas fa-tools"></i> Equipment Needed</h3>
+                        <p id="instruction-equipment">Measuring tape, marked starting line</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3><i class="fas fa-clock"></i> Test Duration</h3>
+                        <p id="instruction-duration">3 attempts allowed</p>
+                    </div>
+
+                    <div class="gamification-tips">
+                        <h4><i class="fas fa-lightbulb"></i> Performance Tips for Max XP:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Perfect form grants bonus XP</li>
+                            <li><i class="fas fa-check"></i> Complete within time limit for speed bonus</li>
+                            <li><i class="fas fa-check"></i> Beat your personal best for achievement progress</li>
+                            <li><i class="fas fa-check"></i> Good lighting improves AI analysis accuracy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="instruction-actions">
+                    <button class="btn btn--primary btn--lg btn--full-width" onclick="startRecording()">
+                        <i class="fas fa-video"></i> Start Recording & Earn XP
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Recording -->
+    <div id="video-recording" class="screen">
+        <div class="container">
+            <div class="breadcrumb">
+                <span>Assessment</span> <i class="fas fa-chevron-right"></i> 
+                <span>Instructions</span> <i class="fas fa-chevron-right"></i> 
+                <span class="active">Recording</span>
+            </div>
+            
+            <div class="recording-interface">
+                <div class="recording-header">
+                    <h2 id="recording-title">Recording: Standing Broad Jump</h2>
+                    <div class="xp-tracker">
+                        <i class="fas fa-star"></i>
+                        <span>Potential XP: <span id="recording-xp-potential">200-450</span></span>
+                    </div>
+                </div>
+                
+                <div class="camera-simulation">
+                    <div class="viewfinder">
+                        <div class="camera-overlay">
+                            <div class="recording-indicator" id="recording-indicator">
+                                <span class="record-dot"></span>
+                                <span>REC</span>
+                            </div>
+                            <div class="performance-hints">
+                                <div class="hint-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>Keep full body in frame</span>
+                                </div>
+                                <div class="hint-item">
+                                    <i class="fas fa-sun"></i>
+                                    <span>Good lighting detected</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recording-controls">
+                    <div class="timer" id="recording-timer">00:00</div>
+                    <div class="control-buttons">
+                        <button class="btn btn--primary btn--lg record-btn" id="record-btn" onclick="toggleRecording()">
+                            <i class="fas fa-circle"></i>
+                            Start Recording
+                        </button>
+                        <button class="btn btn--secondary" onclick="showInstructions()">
+                            <i class="fas fa-list"></i> Instructions
+                        </button>
+                    </div>
+                </div>
+
+                <div class="upload-option">
+                    <p>Or upload existing video:</p>
+                    <input type="file" id="video-upload" accept="video/*" style="display: none;">
+                    <button class="btn btn--outline" onclick="document.getElementById('video-upload').click()">
+                        <i class="fas fa-upload"></i> Upload Video
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Analysis -->
+    <div id="ai-analysis" class="screen">
+        <div class="container">
+            <div class="analysis-interface">
+                <h2><i class="fas fa-robot"></i> AI Analysis in Progress</h2>
+                <p>Our advanced AI is analyzing your performance to calculate XP rewards...</p>
+
+                <div class="analysis-steps">
+                    <div class="analysis-step" id="step-1">
+                        <div class="step-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="step-info">
+                            <h4>Video Processing</h4>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress-1"></div>
+                            </div>
+                            <span class="step-status">Processing...</span>
+                        </div>
+                    </div>
+
+                    <div class="analysis-step" id="step-2">
+                        <div class="step-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="step-info">
+                            <h4>AI Movement Analysis</h4>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress-2"></div>
+                            </div>
+                            <span class="step-status">Waiting...</span>
+                        </div>
+                    </div>
+
+                    <div class="analysis-step" id="step-3">
+                        <div class="step-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <div class="step-info">
+                            <h4>Performance Measurement</h4>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress-3"></div>
+                            </div>
+                            <span class="step-status">Waiting...</span>
+                        </div>
+                    </div>
+
+                    <div class="analysis-step" id="step-4">
+                        <div class="step-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="step-info">
+                            <h4>XP Calculation</h4>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress-4"></div>
+                            </div>
+                            <span class="step-status">Waiting...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-preview">
+                    <h3><i class="fas fa-chart-line"></i> Performance Preview</h3>
+                    <div class="preview-stats">
+                        <div class="preview-stat">
+                            <i class="fas fa-percentage"></i>
+                            <span class="label">Form Score:</span>
+                            <span class="value" id="form-preview">95%</span>
+                        </div>
+                        <div class="preview-stat">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="label">Accuracy:</span>
+                            <span class="value" id="accuracy-preview">Excellent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Results -->
+    <div id="test-results" class="screen">
+        <div class="container">
+            <div class="results-interface">
+                <div class="results-celebration">
+                    <div class="celebration-animation">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2>Challenge Complete!</h2>
+                    <div class="xp-earned-big" id="xp-earned-display">+300 XP</div>
+                </div>
+
+                <div class="results-header">
+                    <div class="test-icon-large" id="results-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3 id="results-title">Standing Broad Jump Results</h3>
+                    <div class="overall-rating" id="overall-rating">Excellent</div>
+                </div>
+
+                <div class="results-metrics">
+                    <div class="metric-card primary-metric">
+                        <div class="metric-label" id="primary-metric-label">Distance</div>
+                        <div class="metric-value" id="primary-metric-value">245 cm</div>
+                        <div class="performance-indicator excellent">
+                            <i class="fas fa-star"></i>
+                            <span>Outstanding Performance!</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-row">
+                        <div class="metric-card">
+                            <div class="metric-label">Percentile Rank</div>
+                            <div class="metric-value" id="percentile-value">75th</div>
+                            <div class="rank-indicator">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Above Average</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Form Score</div>
+                            <div class="metric-value" id="form-score">92%</div>
+                            <div class="form-bonus">
+                                <i class="fas fa-plus"></i>
+                                <span>Bonus XP Earned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-unlocked" id="achievements-unlocked" style="display: none;">
+                    <h3><i class="fas fa-trophy"></i> Achievements Unlocked!</h3>
+                    <div class="achievement-list">
+                        <!-- Achievements will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="level-progress-update">
+                    <h3><i class="fas fa-chart-line"></i> Level Progress</h3>
+                    <div class="level-progress-card">
+                        <div class="level-info">
+                            <span class="current-level" id="results-level">Level 3 - Advanced</span>
+                            <span class="xp-gained">+300 XP gained!</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="results-level-progress" style="width: 62%"></div>
+                        </div>
+                        <div class="xp-info">
+                            <span id="results-xp-info">1,750 / 2,500 XP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn btn--primary btn--lg" onclick="showTestSelection()">
+                        <i class="fas fa-forward"></i> Continue Assessment
+                    </button>
+                    <button class="btn btn--outline" onclick="shareResults()">
+                        <i class="fas fa-share-alt"></i> Share Achievement
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div id="leaderboard" class="screen">
+        <div class="container">
+            <div class="leaderboard-header">
+                <button class="btn btn--outline btn--sm back-btn" onclick="showAthleteProfile()">
+                    <i class="fas fa-arrow-left"></i> Back to Profile
+                </button>
+                <h2><i class="fas fa-crown"></i> Leaderboard</h2>
+                <div class="leaderboard-filters">
+                    <select class="form-control">
+                        <option>All Time</option>
+                        <option>This Month</option>
+                        <option>This Week</option>
+                    </select>
+                    <select class="form-control">
+                        <option>All Regions</option>
+                        <option>North</option>
+                        <option>South</option>
+                        <option>East</option>
+                        <option>West</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="leaderboard-content">
+                <div class="top-performers">
+                    <div class="podium">
+                        <div class="podium-position second">
+                            <div class="position-number">2</div>
+                            <div class="athlete-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="athlete-name">Arjun S.</div>
+                            <div class="athlete-score">1,450 XP</div>
+                            <div class="level-badge level-3">L3</div>
+                        </div>
+                        <div class="podium-position first">
+                            <div class="crown">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="position-number">1</div>
+                            <div class="athlete-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="athlete-name">Priya P.</div>
+                            <div class="athlete-score">2,100 XP</div>
+                            <div class="level-badge level-4">L4</div>
+                        </div>
+                        <div class="podium-position third">
+                            <div class="position-number">3</div>
+                            <div class="athlete-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="athlete-name">Rajesh K.</div>
+                            <div class="athlete-score">750 XP</div>
+                            <div class="level-badge level-2">L2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leaderboard-list">
+                    <div class="list-header">
+                        <span>Rank</span>
+                        <span>Athlete</span>
+                        <span>Level</span>
+                        <span>Total XP</span>
+                        <span>Badges</span>
+                    </div>
+                    <!-- Additional leaderboard entries would be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Login -->
+    <div id="official-login" class="screen">
+        <div class="container">
+            <div class="auth-form">
+                <button class="btn btn--outline btn--sm back-btn" onclick="showLanding()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2><i class="fas fa-shield-alt"></i> Official Access</h2>
+                <p>SAI credentials required for dashboard access</p>
+                
+                <form id="official-form" class="form">
+                    <div class="form-group">
+                        <label class="form-label" for="official-id">
+                            <i class="fas fa-id-badge"></i> Official ID
+                        </label>
+                        <input type="text" id="official-id" class="form-control" placeholder="SAI-XXX-XXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="official-password">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" id="official-password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">
+                        <i class="fas fa-sign-in-alt"></i> Access Dashboard
+                    </button>
+                </form>
+                
+                <div class="demo-credentials">
+                    <p><strong>Demo Access:</strong></p>
+                    <p>ID: demo-official | Password: sai2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Dashboard -->
+    <div id="official-dashboard" class="screen">
+        <div class="dashboard-container">
+            <nav class="dashboard-nav">
+                <div class="nav-header">
+                    <div class="dashboard-logo">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>SAI Dashboard</h3>
+                    </div>
+                    <button class="btn btn--outline btn--sm" onclick="showLanding()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                <div class="nav-menu">
+                    <button class="nav-item active" onclick="showDashboardOverview()">
+                        <i class="fas fa-chart-line"></i> Overview
+                    </button>
+                    <button class="nav-item" onclick="showAthleteManagement()">
+                        <i class="fas fa-users"></i> Athletes
+                    </button>
+                    <button class="nav-item" onclick="showGamificationStats()">
+                        <i class="fas fa-trophy"></i> Gamification
+                    </button>
+                    <button class="nav-item" onclick="showReports()">
+                        <i class="fas fa-file-chart"></i> Reports
+                    </button>
+                </div>
+            </nav>
+
+            <main class="dashboard-main">
+                <!-- Dashboard Overview -->
+                <div id="dashboard-overview" class="dashboard-section active">
+                    <div class="dashboard-header">
+                        <h2><i class="fas fa-tachometer-alt"></i> Platform Overview</h2>
+                        <p>Comprehensive gamification and assessment analytics</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value">1,247</div>
+                                <div class="stat-label">Total Athletes</div>
+                                <div class="stat-trend positive">
+                                    <i class="fas fa-arrow-up"></i> +12%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value">125,000</div>
+                                <div class="stat-label">Total XP Awarded</div>
+                                <div class="stat-trend positive">
+                                    <i class="fas fa-arrow-up"></i> +18%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value">450</div>
+                                <div class="stat-label">Badges Earned</div>
+                                <div class="stat-trend positive">
+                                    <i class="fas fa-arrow-up"></i> +25%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value">2.3</div>
+                                <div class="stat-label">Average Level</div>
+                                <div class="stat-trend positive">
+                                    <i class="fas fa-arrow-up"></i> +8%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-charts">
+                        <div class="chart-card">
+                            <h3><i class="fas fa-chart-area"></i> Engagement Metrics</h3>
+                            <div class="engagement-stats">
+                                <div class="engagement-metric">
+                                    <div class="metric-label">Daily Active Users</div>
+                                    <div class="metric-value">156</div>
+                                    <div class="metric-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="engagement-metric">
+                                    <div class="metric-label">Average Session Time</div>
+                                    <div class="metric-value">12 min</div>
+                                    <div class="metric-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="engagement-metric">
+                                    <div class="metric-label">Challenge Completion</div>
+                                    <div class="metric-value">84%</div>
+                                    <div class="metric-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 84%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <h3><i class="fas fa-medal"></i> Level Distribution</h3>
+                            <div class="level-distribution">
+                                <div class="level-stat">
+                                    <div class="level-info">
+                                        <span class="level-name">Beginner (L1)</span>
+                                        <span class="level-count">423 athletes</span>
+                                    </div>
+                                    <div class="level-bar">
+                                        <div class="level-fill beginner" style="width: 34%"></div>
+                                    </div>
+                                </div>
+                                <div class="level-stat">
+                                    <div class="level-info">
+                                        <span class="level-name">Intermediate (L2)</span>
+                                        <span class="level-count">398 athletes</span>
+                                    </div>
+                                    <div class="level-bar">
+                                        <div class="level-fill intermediate" style="width: 32%"></div>
+                                    </div>
+                                </div>
+                                <div class="level-stat">
+                                    <div class="level-info">
+                                        <span class="level-name">Advanced (L3)</span>
+                                        <span class="level-count">312 athletes</span>
+                                    </div>
+                                    <div class="level-bar">
+                                        <div class="level-fill advanced" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <div class="level-stat">
+                                    <div class="level-info">
+                                        <span class="level-name">Elite (L4)</span>
+                                        <span class="level-count">114 athletes</span>
+                                    </div>
+                                    <div class="level-bar">
+                                        <div class="level-fill elite" style="width: 9%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Athlete Management -->
+                <div id="athlete-management" class="dashboard-section">
+                    <div class="management-header">
+                        <h2><i class="fas fa-users"></i> Athlete Management</h2>
+                        <div class="management-controls">
+                            <input type="text" class="form-control search-input" placeholder="Search athletes..." id="athlete-search">
+                            <select class="form-control filter-select" id="level-filter">
+                                <option value="">All Levels</option>
+                                <option value="1">Level 1 - Beginner</option>
+                                <option value="2">Level 2 - Intermediate</option>
+                                <option value="3">Level 3 - Advanced</option>
+                                <option value="4">Level 4 - Elite</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="athlete-table">
+                        <div class="table-header">
+                            <div class="table-cell">Athlete</div>
+                            <div class="table-cell">Level</div>
+                            <div class="table-cell">Total XP</div>
+                            <div class="table-cell">Badges</div>
+                            <div class="table-cell">Streak</div>
+                            <div class="table-cell">Actions</div>
+                        </div>
+                        <div id="athlete-list" class="table-body">
+                            <!-- Athletes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gamification Stats -->
+                <div id="gamification-stats" class="dashboard-section">
+                    <div class="dashboard-header">
+                        <h2><i class="fas fa-trophy"></i> Gamification Analytics</h2>
+                        <p>Detailed insights into engagement and achievement systems</p>
+                    </div>
+
+                    <div class="gamification-overview">
+                        <div class="achievement-stats">
+                            <h3><i class="fas fa-medal"></i> Achievement Statistics</h3>
+                            <div class="achievement-grid">
+                                <div class="achievement-card">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-play-circle"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>First Steps</h4>
+                                        <div class="achievement-count">892 earned</div>
+                                        <div class="achievement-percentage">71.5%</div>
+                                    </div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Perfect Score</h4>
+                                        <div class="achievement-count">234 earned</div>
+                                        <div class="achievement-percentage">18.8%</div>
+                                    </div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Speed Demon</h4>
+                                        <div class="achievement-count">156 earned</div>
+                                        <div class="achievement-percentage">12.5%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-completion">
+                            <h3><i class="fas fa-tasks"></i> Challenge Completion Rates</h3>
+                            <div class="challenge-stats">
+                                <div class="challenge-stat">
+                                    <div class="challenge-name">Daily Assessment</div>
+                                    <div class="completion-rate">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 76%"></div>
+                                        </div>
+                                        <span>76%</span>
+                                    </div>
+                                </div>
+                                <div class="challenge-stat">
+                                    <div class="challenge-name">Triple Threat Weekly</div>
+                                    <div class="completion-rate">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 43%"></div>
+                                        </div>
+                                        <span>43%</span>
+                                    </div>
+                                </div>
+                                <div class="challenge-stat">
+                                    <div class="challenge-name">Personal Best Challenge</div>
+                                    <div class="completion-rate">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 28%"></div>
+                                        </div>
+                                        <span>28%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
